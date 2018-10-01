@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Easy Rewrite Url Rules
  * Description: A WordPress plugin for rewrite url's.
- * Plugin URI: 
+ * Plugin URI: https://github.com/AntonRzevskiy/wp-easy-rewrite-url-rules
  * Author: Anton Rzhevskiy
  * Author URI: https://github.com/AntonRzevskiy
  * Version: 0.0.1
@@ -24,25 +24,32 @@ register_activation_hook( WP_EASY_REWRITE_URL_RULES_FILE, array( 'WP_Easy_Rewrit
 register_deactivation_hook( WP_EASY_REWRITE_URL_RULES_FILE, array( 'WP_Easy_Rewrite_Url_Rules', 'deactivate' ) );
 
 /**
- * Class WP_Easy_Rewrite_Url_Rules
+ * Final Class WP_Easy_Rewrite_Url_Rules
  */
 final class WP_Easy_Rewrite_Url_Rules {
 
 	/**
 	 * Plugin instance.
 	 *
-	 * @var WP_Easy_Rewrite_Url_Rules
-	 * @access private
+	 * @since    0.0.1
+	 *
+	 * @access   private
+	 *
+	 * @var      object    $instance    Instance of the class WP_Easy_Rewrite_Url_Rules.
 	 */
 	private static $instance = null;
 
 	/**
-	 * Get plugin instance.
+	 * Get plugin instance or set it once.
 	 *
-	 * @return WP_Easy_Rewrite_Url_Rules
+	 * @since    0.0.1
+	 *
 	 * @static
+	 *
+	 * @return   Instance of the class WP_Easy_Rewrite_Url_Rules.
 	 */
 	public static function get_instance() {
+
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self;
 		}
@@ -53,34 +60,44 @@ final class WP_Easy_Rewrite_Url_Rules {
 	/**
 	 * Constructor.
 	 *
-	 * @access private
+	 * @since    0.0.1
+	 *
+	 * @access   private
 	 */
 	private function __construct() {
-		$this->includes();
 
+		/**
+		 * Fires once after activated plugins have been loaded.
+		 *
+		 * @since    WP 1.5.0
+		 */
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	}
 
 	/**
-	 * Load plugin function files here.
-	 */
-	public function includes() {
-	}
-
-	/**
-	 * Code you want to run when all other plugins loaded.
+	 * This function will do something after loading the plugin into WP.
+	 *
+	 * @since    0.0.1
 	 */
 	public function init() {
 	}
 
 	/**
 	 * Run when activate plugin.
+	 *
+	 * @since    0.0.1
+	 *
+	 * @static
 	 */
 	public static function activate() {
 	}
 
 	/**
 	 * Run when deactivate plugin.
+	 *
+	 * @since    0.0.1
+	 *
+	 * @static
 	 */
 	public static function deactivate() {
 	}
